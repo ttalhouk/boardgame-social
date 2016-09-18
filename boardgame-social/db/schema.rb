@@ -10,10 +10,28 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160916230604) do
+ActiveRecord::Schema.define(version: 20160918171338) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "collections", force: :cascade do |t|
+    t.integer  "owner_id"
+    t.integer  "game_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["owner_id"], name: "index_collections_on_owner_id", using: :btree
+  end
+
+  create_table "games", force: :cascade do |t|
+    t.string   "name"
+    t.string   "image"
+    t.string   "description"
+    t.string   "bgg_link"
+    t.integer  "bgg_id"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+  end
 
   create_table "users", force: :cascade do |t|
     t.string   "bgg_username",           default: "", null: false
