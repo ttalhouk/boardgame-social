@@ -1,5 +1,5 @@
 class User < ApplicationRecord
-  has_many :collections, foreign_key: :owner_id
+  has_many :collections, foreign_key: :owner_id, dependent: :destroy
   has_many :games, through: :collections
 
   validates :bgg_username, presence: true
