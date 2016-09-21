@@ -67,6 +67,13 @@ GEM
     diff-lcs (1.2.5)
     erubis (2.7.0)
     execjs (2.7.0)
+    factory_girl (4.7.0)
+      activesupport (>= 3.0.0)
+    factory_girl_rails (4.7.0)
+      factory_girl (~> 4.7.0)
+      railties (>= 3.0.0)
+    faker (1.6.6)
+      i18n (~> 0.5)
     ffi (1.9.14)
     globalid (0.3.7)
       activesupport (>= 4.1.0)
@@ -169,6 +176,8 @@ GEM
       sprockets (>= 2.8, < 4.0)
       sprockets-rails (>= 2.0, < 4.0)
       tilt (>= 1.1, < 3)
+    shoulda-matchers (3.1.1)
+      activesupport (>= 4.0.0)
     spring (1.7.2)
     spring-watcher-listen (2.0.0)
       listen (>= 2.7, < 4.0)
@@ -211,6 +220,8 @@ DEPENDENCIES
   bootstrap-sass (~> 3.3.6)
   byebug
   devise
+  factory_girl_rails
+  faker
   jbuilder (~> 2.5)
   jquery-rails
   jquery-turbolinks
@@ -221,6 +232,7 @@ DEPENDENCIES
   react-rails
   rspec-rails (~> 3.5)
   sass-rails (~> 5.0)
+  shoulda-matchers
   spring
   spring-watcher-listen (~> 2.0.0)
   turbolinks (~> 5)

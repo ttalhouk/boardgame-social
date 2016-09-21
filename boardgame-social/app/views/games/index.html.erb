@@ -1,0 +1,10 @@
+<h1>Games#index</h1>
+<p>Find me in app/views/games/index.html.erb</p>
+
+<!-- list out players games -->
+
+<!-- add link to sync BGG account -->
+
+<% if params[:user_id].to_i == current_user.id %>
+  <%= link_to 'Sync Account to Boardgame Geek', user_games_sync_path(current_user), class:'btn btn-primary', method: 'post' %>
+<% end %>
