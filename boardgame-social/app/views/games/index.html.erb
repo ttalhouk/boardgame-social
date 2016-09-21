@@ -1,10 +1,48 @@
-<h1>Games#index</h1>
-<p>Find me in app/views/games/index.html.erb</p>
+
+<div class="page-header">
+  <%= image_tag(@user.image, class: "profile-image img-responsive center-block") %>
+  <h1 class="text-center"><%= @user.bgg_username %>'s <small>Game Collection</small></h1>
+</div>
 
 <!-- list out players games -->
+<div class=row>
+  <% @games.each do |game| %>
+    <div class="col-sx-12">
+      <div class="panel panel-default ">
+        <div class="panel-heading game-panel-heading highlight">
+          <h3 class="game-panel-title"><%= game.name %>
+            <span class="glyphicon glyphicon-triangle-bottom pull-right" aria-hidden="true"></span>
+            <span class="glyphicon glyphicon-triangle-top pull-right hide-content" aria-hidden="true"></span></h3>
 
+        </div>
+        <div class="panel-body game-panel-body hide-content">
+          <div class="row">
+            <div class="col-xs-12 col-sm-2 col-md-3">
+              <%= image_tag(game.image, class: "game-panel-image img-responsive") %>
+              <%= link_to(game.bgg_link) do%>
+                <div class="text-center">
+                  <span class="glyphicon glyphicon-globe" aria-hidden="true"></span>
+                  <span class="sr-only">Link to BGG Listing</span>
+                  BGG Game Listing
+                </div>
+              <% end %>
+            </div>
+            <%= link_to user_game_path(@user, game) do %>
+              <div class="col-xs-12 col-sm-10 col-md-9">
+                <h4>Game Description</h4>
+                <p class="game-panel-text">
+                  <%= game.description.html_safe %>
+                </p>
+              </div>
+            <% end %>
+          </div>
+        </div>
+      </div>
+    </div>
+  <% end %>
+</div>
 <!-- add link to sync BGG account -->
 
 <% if params[:user_id].to_i == current_user.id %>
-  <%= link_to 'Sync Account to Boardgame Geek', user_games_sync_path(current_user), class:'btn btn-primary', method: 'post' %>
+  <%= link_to 'Sync Account to Boardgame Geek', user_games_sync_path(current_user), class:'btn btn-primary center-block', method: 'post' %>
 <% end %>
