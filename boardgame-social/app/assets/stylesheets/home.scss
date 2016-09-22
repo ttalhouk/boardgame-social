@@ -1,3 +1,19 @@
 // Place all the styles related to the Home controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+div.home-content{
+  min-height: 400px;
+  display:flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+}
+.home-title{
+  flex: auto;
+  font-size: 5vw;
+}
+.home-text{
+  flex: auto;
+  font-size: 3vw;
+  color: #337ab7;
+}
