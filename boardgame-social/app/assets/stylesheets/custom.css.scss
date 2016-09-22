@@ -6,8 +6,6 @@
   @extend .alert-info;
 }
 
-
-
 @import "bootstrap-sprockets";
 @import "bootstrap";
 
@@ -30,4 +28,47 @@
   h6 {
     font-size: 3.5vw;
   }
+}
+html {
+  height: 100%;
+}
+body {
+  background-image: image-url("game-workers.jpg");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-position: center;
+}
+.wrapper{
+  position:absolute;
+  width: 100%;
+  height:100%;
+  margin: -50px auto;
+  z-index: -2;
+}
+div.container {
+  background: rgba(255,255,255,0.7);
+  position: relative;
+  padding-top: 50px;
+  padding-bottom: 20px;
+  min-height: 100%;
+  z-index:-1;
+}
+.navbar {
+  margin-bottom: 0px;
+}
+.navbar-brand {
+  font-size: 28px;
+}
+
+.navbar-header:before, .navbar-header:after {
+  display: inline;
+}
+
+.dropdown-menu > li > a, .dropdown-toggle {
+  text-align:right;
+}
+
+.dropdown-menu {
+  min-width: 110px;
 }
