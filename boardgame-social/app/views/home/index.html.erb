@@ -5,11 +5,11 @@
     A place for friends to share games and set up game nights.  Sign up and load in your collection today and start playing tonight.
   </p>
 </div>
+<div class="row home-links">
   <% if current_user %>
-    <div class="row">
       <div class="col-xs-6 col-xs-offset-3 col-sm-4 col-sm-offset-4 col-md-2 col-md-offset-5">
         <%= link_to user_path(current_user) do %>
-          <div class="btn btn-primary center-block">
+          <div class="btn btn-primary center-block grow">
             <span class="glyphicon glyphicon-king" aria-hidden="true"> </span>
             Go to Profile
           </div>
@@ -17,10 +17,9 @@
       </div>
     </div>
   <% else %>
-  <div class="row">
-    <div class="col-xs-8 col-xs-offset-2">
-      <%= link_to 'Sign Up', new_user_registration_path , class:'btn btn-success center-block', method: 'get' %>
-      <%= link_to 'Log In', new_user_session_path , class:'btn btn-primary center-block', method: 'get' %>
+    <div class="col-xs-8 col-xs-offset-2 slide">
+      <%= link_to 'Sign Up', new_user_registration_path , class:'btn btn-success center-block grow', method: 'get' %>
+      <%= link_to 'Log In', new_user_session_path , class:'btn btn-primary center-block grow', method: 'get' %>
     </div>
   </div>
 

@@ -12,7 +12,7 @@ class GamesController < ApplicationController
   end
 
   def index
-    @games = @user.games
+    @games = @user.games.order(:name).page(params[:page]).per_page(10)
   end
 
   def show
