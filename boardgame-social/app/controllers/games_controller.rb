@@ -20,7 +20,7 @@ class GamesController < ApplicationController
 
   def result
     search_term = search_params[:search]
-    @games = BggSearch.search_bgg(search_term).paginate(:page => params[:page], :per_page => 10)
+    @games = BggSearch.search_bgg(search_term).paginate(:page => params[:page], :per_page => 30)
     pp @games
     respond_to do |format|
       format.html
