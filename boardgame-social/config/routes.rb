@@ -12,5 +12,7 @@ Rails.application.routes.draw do
   resources :users, only: [:index, :show] do
     resources :games, only: [:index, :show]
     post 'games/sync', to: 'games#sync', as: 'games_sync'
+    post 'games/add', to: 'games#add', as: 'games_add'
+    delete 'games/remove', to: 'games#remove', as:'games_remove'
   end
 end
