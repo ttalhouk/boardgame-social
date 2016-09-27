@@ -10,7 +10,7 @@
         </div>
         <div class="panel-body game-panel-body hide-content">
           <div class="row">
-            <div class="col-xs-12 col-sm-2 col-md-3">
+            <div class="col-xs-12 col-sm-2 col-md-3 text-center">
               <%= image_tag(game.image, class: "game-panel-image img-responsive") %>
               <%= link_to(game.bgg_link) do%>
                 <div class="text-center">
@@ -18,6 +18,9 @@
                   <span class="sr-only">Link to BGG Listing</span>
                   BGG Game Listing
                 </div>
+              <% end %>
+              <%= button_to user_games_add_path(current_user), method: 'post', params: {game_id: game.bgg_id}, class:"btn btn-success btn-responsive center-block add-button" do %>
+                  <span class="glyphicon glyphicon-plus"></span> Add to Collection
               <% end %>
             </div>
             <div class="col-xs-12 col-sm-10 col-md-9">

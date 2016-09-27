@@ -11,11 +11,18 @@ module CollectionUpdater
       return collection.owned
     end
 
-    def add_to_collection(user, collection)
+    def sync_collection(user, collection)
       collection.each do |game|
-        user.games.where(bgg_id: game.id).first_or_create({name: game.name, image: game.image, bgg_link: "http://boardgamegeek.com/boardgame/#{game.id}", description: get_description(game)})
+        game_in_db = Game.where(bgg_id: game.id).first_or_create({name: game.name, image: game.image, bgg_link: "http://boardgamegeek.com/boardgame/#{game.id}", description: get_description(game)})
 
+        if user.games.where(bgg_id: game.id).empty?
+          user.games << game_in_db
+        end
       end
+    end
+
+    def add_to_collection(user, game_data)
+      return user.games.where(bgg_id: game_data['id']).first_or_create({name: game_data['name'][0]['value'], image: game_data['image'][0], bgg_link: "http://boardgamegeek.com/boardgame/#{game_data['id']}", description: game_data['description'][0]})
     end
 
     def get_description(game)
