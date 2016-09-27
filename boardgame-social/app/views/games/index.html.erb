@@ -45,6 +45,17 @@
     </div>
   <% end %>
 </div>
+<!-- pagination -->
+<div class="row pagination-links">
+  <div class="col-xs-12 col-sm-10 col-sm-offset-1 text-center well well-small bg-info">
+    <p class="game-page-info">
+      <%= page_entries_info @games %>
+    </p>
+    <%= will_paginate @games, :page_links => true %>
+
+  </div>
+</div>
+
 <!-- add link to sync BGG account -->
 
 <% if params[:user_id].to_i == current_user.id %>
