@@ -9,8 +9,23 @@
   margin: 0 auto;
 }
 .pagination {
-  margin: 10px auto;
+  margin: 5px auto;
+
+  > * {
+    padding: 7px;
+    border: 1px solid black;
+    background-color: #d9edf7;
+    border-radius: 8px;
+  }
+  .current{
+    // background-color: darken(#d9edf7, 50%)
+    background-color: #FFB732;
+  }
 }
+// .pagination-links {
+//   margin: 10px auto;
+//   border-bottom: 2px solid;
+// }
 .game-panel-title {
   margin: 1px;
 }
@@ -30,3 +45,25 @@
 //       transform: translateX(15px);
 //   }
 // }
+#results-list {
+  margin-top: 10px;
+}
+.notifications{
+  visibility: hidden;
+}
+.loading {
+  display: none;
+  animation: slowBlink 2s linear infinite
+}
+
+@keyframes slowBlink {
+  0% {
+    opacity: 0;
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}

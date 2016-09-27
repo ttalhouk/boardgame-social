@@ -1,0 +1,47 @@
+<% if games.any? %>
+  <% games.each do |game| %>
+    <div class="col-xs-12 col-sm-10 col-sm-offset-1">
+      <div class="panel panel-default ">
+        <div class="panel-heading game-panel-heading highlight">
+          <h3 class="game-panel-title"><%= game.name %>
+            <span class="glyphicon glyphicon-triangle-bottom pull-right" aria-hidden="true"></span>
+            <span class="glyphicon glyphicon-triangle-top pull-right hide-content" aria-hidden="true"></span>
+          </h3>
+        </div>
+        <div class="panel-body game-panel-body hide-content">
+          <div class="row">
+            <div class="col-xs-12 col-sm-2 col-md-3">
+              <%= image_tag(game.image, class: "game-panel-image img-responsive") %>
+              <%= link_to(game.bgg_link) do%>
+                <div class="text-center">
+                  <span class="glyphicon glyphicon-globe" aria-hidden="true"></span>
+                  <span class="sr-only">Link to BGG Listing</span>
+                  BGG Game Listing
+                </div>
+              <% end %>
+            </div>
+            <div class="col-xs-12 col-sm-10 col-md-9">
+              <h4>Game Description</h4>
+              <p class="game-panel-text">
+                <%= game.description.html_safe %>
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  <% end %>
+  <div class="row pagination-links">
+    <div class="col-xs-12 col-sm-10 col-sm-offset-1 text-center well well-small bg-info">
+      <p class="game-page-info">
+        <%= page_entries_info games %>
+      </p>
+      <%= will_paginate games, :page_links => true %>
+
+    </div>
+  </div>
+<% else %>
+  <div class="col-xs-12 col-sm-10 col-sm-offset-1">
+    <h3 class="text-center">No Results Available</h3>
+  </div>
+<% end %>

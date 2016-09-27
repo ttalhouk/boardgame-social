@@ -45,12 +45,13 @@
     </div>
   <% end %>
 </div>
-<div class="row">
-  <div class="col-xs-12 text-center ">
-    <p class="text-primary game-page-info">
+<!-- pagination -->
+<div class="row pagination-links">
+  <div class="col-xs-12 col-sm-10 col-sm-offset-1 text-center well well-small bg-info">
+    <p class="game-page-info">
       <%= page_entries_info @games %>
     </p>
-    <%= will_paginate @games, :page_links => false %>
+    <%= will_paginate @games, :page_links => true %>
 
   </div>
 </div>

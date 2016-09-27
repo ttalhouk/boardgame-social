@@ -1,9 +1,17 @@
 // Place all the behaviors and hooks related to the matching controller here.
 // All this logic will automatically be available in application.js.
 $( document ).ready(function() {
-  $(".game-panel-heading").on('click', function(e){
+  $("body").on('click',".game-panel-heading", function(e){
     console.log("clicked" + $(this));
     $(this).find("span").toggle();
     $(this).next().toggle(250);
   });
+  $(document).ajaxStart(function(e){
+    $('#results-list').html("")
+    $('.loading').show();
+  });
+  $(document).ajaxComplete(function(e){
+    $('.loading').hide();
+  })
+
 });
