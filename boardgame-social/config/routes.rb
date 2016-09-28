@@ -9,7 +9,9 @@ Rails.application.routes.draw do
   root 'home#index'
   get 'games/search', to: 'games#search', as: 'games_search'
   get 'games/result', to: 'games#result', as: 'games_result'
-  resources :users, only: [:index, :show] do
+  get 'users/search', to: 'users#search', as: 'users_search'
+  get 'users/result', to: 'users#result', as: 'users_result'
+  resources :users, only: [:show] do
     resources :games, only: [:index, :show]
     post 'games/sync', to: 'games#sync', as: 'games_sync'
     post 'games/add', to: 'games#add', as: 'games_add'
