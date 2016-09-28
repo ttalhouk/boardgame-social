@@ -1,0 +1,46 @@
+<% if users.any? %>
+  <% users.each do |user| %>
+    <div class="col-xs-12 col-sm-10 col-sm-offset-1">
+      <div class="panel panel-default ">
+        <div class="panel-heading user-panel-heading highlight">
+          <h3 class="user-panel-title"><%= user.bgg_username %>
+            <span class="glyphicon glyphicon-triangle-bottom pull-right" aria-hidden="true"></span>
+            <span class="glyphicon glyphicon-triangle-top pull-right hide-content" aria-hidden="true"></span>
+          </h3>
+        </div>
+        <div class="panel-body user-panel-body hide-content">
+          <div class="row">
+            <div class="col-xs-12 col-sm-2 col-md-3 text-center">
+              <%= image_tag(user.image, class: "user-panel-image img-responsive") %>
+              <%= link_to user_games_path(user), class:"btn btn-success btn-responsive center-block" do %>
+                  <span class="glyphicon glyphicon-globe" aria-hidden="true"></span>
+                  <span class="sr-only">Link to User Collection</span><%= user.bgg_username%>'s Collection
+              <% end %>
+
+              <!-- may add friend link here -->
+            </div>
+            <div class="col-xs-12 col-sm-10 col-md-9">
+              <h4>User Info</h4>
+              <p class="user-panel-text">
+                info here
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  <% end %>
+  <div class="row pagination-links">
+    <div class="col-xs-12 col-sm-10 col-sm-offset-1 text-center well well-small bg-info">
+      <p class="user-page-info">
+        <%= page_entries_info users %>
+      </p>
+      <%= will_paginate users, :page_links => true %>
+
+    </div>
+  </div>
+<% else %>
+  <div class="col-xs-12 col-sm-10 col-sm-offset-1">
+    <h3 class="text-center">No Results Available</h3>
+  </div>
+<% end %>

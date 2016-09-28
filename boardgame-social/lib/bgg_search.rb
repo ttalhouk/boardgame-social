@@ -23,9 +23,7 @@ module BggSearch
         item.type == "boardgame"
       end
       boardgame_ids = boardgame_list.map {|boardgame| boardgame.id}
-      p boardgame_ids
       game_data = BggApi.thing({id: boardgame_ids.join(',')})
-      pp game_data
       return game_data['item'].map do |boardgame|
         Game.new({
           description: boardgame['description'][0],

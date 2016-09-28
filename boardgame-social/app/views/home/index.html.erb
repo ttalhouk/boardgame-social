@@ -17,9 +17,13 @@
       </div>
     </div>
   <% else %>
-    <div class="col-xs-8 col-xs-offset-2 slide">
-      <%= link_to 'Sign Up', new_user_registration_path , class:'btn btn-success center-block grow', method: 'get' %>
-      <%= link_to 'Log In', new_user_session_path , class:'btn btn-primary center-block grow', method: 'get' %>
+    <div class="col-xs-8 col-xs-offset-2 slide text-center">
+      <%= link_to new_user_registration_path , class:'btn btn-success grow', method: 'get' do %>
+      <span class="glyphicon glyphicon-thumbs-up"></span> Sign Up!
+      <% end %>
+      <%= link_to new_user_session_path , class:'btn btn-primary grow', method: 'get' do %>
+      <span class="glyphicon glyphicon-check"></span> Log Back In!
+      <% end %>
     </div>
   </div>
 
