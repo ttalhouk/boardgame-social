@@ -19,48 +19,14 @@
           <span class="glyphicon glyphicon-tower"></span> <%= @user.bgg_username%>'s Collection
         <% end %>
       </div>
-      <h2>Friends</h2>
-      <ul class="list-group center-block">
-        <% for friendship in @user.friendships %>
-        <li class="list-group-item clearfix">
-          <h3 class="friend-list">
-            <%= link_to user_games_path(friendship.friend) do %>
-              <strong><%= friendship.friend.bgg_username %></strong>
-            <% end %>
-            <span class="badge"><%= friendship.friend.games.count %> games</span>
-            <span class="btn-group pull-right">
-              <% if current_user.id == params[:id].to_i %>
-              <%= button_to friendships_destroy_path, method: 'delete', class:'btn btn-danger', params: {friend: friendship.friend.id, inverse: false} do %>
-              <span class="glyphicon glyphicon-remove"></span> Remove Friend
-              <% end %>
-            </span>
-          </h3>
-          <% end %>
-        </li>
-        <% end %>
-      </ul>
-
-      <h2>Friended by Users</h2>
-      <ul class="list-group center-block">
-        <% for user in @user.inverse_friends %>
-          <li class="list-group-item clearfix">
-            <h3 class="friend-list">
-              <%= link_to user_games_path(user) do %>
-                <strong><%= user.bgg_username %></strong>
-              <% end %>
-              <span class="badge"><%= user.games.count %> games </span>
-              <span class="btn-group pull-right">
-                <% if current_user.id == params[:id].to_i %>
-                  <%= button_to friendships_destroy_path, method: 'delete', class:'btn btn-danger', params: {friend: user.id, inverse: true} do %>
-                    <span class="glyphicon glyphicon-remove"></span> Remove Friend
-                  <% end %>
-                <% end %>
-              </span>
-            </h3>
-          </li>
-        <% end %>
-      </ul>
-
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-xs-10 col-xs-offset-1 col-md-6 col-md-offset-0">
+      <%= render partial: "follow", locals: {profile: @user} %>
+    </div>
+    <div class="col-xs-10 col-xs-offset-1 col-md-6 col-md-offset-0">
+      <%= render partial: "rentals", locals: {profile: @user, loans: @loans, borrowings: @borrowings, requests: @requests} %>
     </div>
   </div>
 </div>

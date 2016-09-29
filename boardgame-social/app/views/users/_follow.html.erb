@@ -1,0 +1,41 @@
+<h3 class="text-center">Following</h3>
+<ul class="list-group center-block">
+  <% for friendship in profile.friendships %>
+  <li class="list-group-item clearfix">
+    <h3 class="friend-list">
+      <%= link_to user_games_path(friendship.friend) do %>
+      <strong><%= friendship.friend.bgg_username %></strong>
+      <% end %>
+      <span class="badge"><%= friendship.friend.games.count %> games</span>
+      <span class="btn-group pull-right">
+        <% if current_user.id == params[:id].to_i %>
+        <%= button_to friendships_destroy_path, method: 'delete', class:'btn btn-danger', params: {friend: friendship.friend.id, inverse: false} do %>
+        <span class="glyphicon glyphicon-remove"></span><span class="hidden-sm hidden-xs"> Remove Friend</span>
+        <% end %>
+      </span>
+    </h3>
+    <% end %>
+  </li>
+  <% end %>
+</ul>
+
+<h3 class="text-center">Followers</h3>
+<ul class="list-group center-block">
+  <% for user in profile.inverse_friends %>
+  <li class="list-group-item clearfix">
+    <h3 class="friend-list">
+      <%= link_to user_games_path(user) do %>
+      <strong><%= user.bgg_username %></strong>
+      <% end %>
+      <span class="badge"><%= user.games.count %> games </span>
+      <span class="btn-group pull-right">
+        <% if current_user.id == params[:id].to_i %>
+        <%= button_to friendships_destroy_path, method: 'delete', class:'btn btn-danger', params: {friend: user.id, inverse: true} do %>
+        <span class="glyphicon glyphicon-remove"></span><span class="hidden-sm hidden-xs"> Remove Friend</span>
+        <% end %>
+        <% end %>
+      </span>
+    </h3>
+  </li>
+  <% end %>
+</ul>
