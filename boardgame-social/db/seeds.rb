@@ -5,3 +5,18 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+require 'faker'
+
+games_list = Game.all
+
+10.times do
+  user = User.create(
+    {
+      bgg_username: Faker::Name.first_name,
+      email: Faker::Internet.email,
+      image: Faker::Avatar.image,
+      password: "default"
+    }
+  )
+  games_list.sample(5).each { |game| user.games << game }
+end
