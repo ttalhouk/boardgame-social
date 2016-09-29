@@ -10,17 +10,20 @@
         </div>
         <div class="panel-body user-panel-body hide-content">
           <div class="row">
-            <div class="col-xs-12 col-sm-2 col-md-3 text-center">
+            <div class="col-xs-12 col-sm-2 col-md-3 text-center user-panel-side">
               <%= image_tag(user.image, class: "user-panel-image img-responsive") %>
-              <%= link_to user_games_path(user), class:"btn btn-success btn-responsive center-block" do %>
+              <%= link_to user_games_path(user), class:"btn btn-info btn-responsive center-block" do %>
                   <span class="glyphicon glyphicon-globe" aria-hidden="true"></span>
                   <span class="sr-only">Link to User Collection</span><%= user.bgg_username%>'s Collection
               <% end %>
-
-              <!-- may add friend link here -->
+              <%= link_to friendships_create_path(:friend_id => user), method: 'post', class:'btn btn-success btn-responsive center-block' do %>
+                <span class="glyphicon glyphicon-user"></span> Add Friend
+              <% end %>
             </div>
             <div class="col-xs-12 col-sm-10 col-md-9">
-              <h4>User Info</h4>
+              <%= link_to user_path(user), method: 'get' do %>
+                <h4>User Info</h4>
+              <% end %>
               <p class="user-panel-text">
                 info here
               </p>

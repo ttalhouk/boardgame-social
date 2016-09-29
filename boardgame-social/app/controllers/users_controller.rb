@@ -9,7 +9,9 @@ class UsersController < ApplicationController
 
   def result
     search_term = search_params[:search]
-    @users = User.where("bgg_username ILIKE (?)", "%#{search_term}%").order(:bgg_username).paginate(:page => params[:page], :per_page => 20)
+
+    @users = User.where("bgg_username ILIKE (?)", "%#{search_term}%").order(:bgg_username).reject { |user| user == current_user }
+    @users = @users.paginate(:page => params[:page], :per_page => 20)
     respond_to do |format|
       format.html
       format.js
