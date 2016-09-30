@@ -56,6 +56,11 @@ class GamesController < ApplicationController
 
   def show
     @game = Game.find(params[:id])
+    @details = BggSearch.get_game_details(@game.bgg_id)
+    @parameters = [:recommended_minimum_age, :max_players, :min_players, :playing_time, :mechanics, :designers, :categories]
+    @parameters.each do |parameter|
+      pp parameter.to_s.gsub(/_/," ")
+    end
   end
 
   private
