@@ -24,9 +24,14 @@
               <%= link_to user_path(user), method: 'get' do %>
                 <h4>User Info</h4>
               <% end %>
-              <p class="user-panel-text">
-                info here
-              </p>
+              <ul class="list-group">
+
+                <li class="list-group-item user-list">
+                  Games owned: <%= user.games.count %>
+                </li>
+                <li class="list-group-item user-list">Following: <%= user.friends.count%></li>
+                <li class="list-group-item user-list">Followed: <%= user.inverse_friends.count %></li>
+              </ul>
             </div>
           </div>
         </div>
