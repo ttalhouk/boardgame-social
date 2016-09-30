@@ -16,6 +16,10 @@ module BggSearch
       return BggApi.thing({id: game_id})
     end
 
+    def get_game_details(game_id)
+      return Bgg::Game.find_by_id(game_id)
+    end
+
     private
 
     def get_boardgames(list)

@@ -1,2 +1,39 @@
-<h1>Games#show</h1>
-<p>Find me in app/views/games/show.html.erb</p>
+<div class="row">
+  <div class="col-xs-12">
+    <h1 class="text-center"><%= @game.name %>
+      <br>
+      <small>Published: <%= @details.year_published %></small>
+    </h1>
+  </div>
+
+</div>
+
+<div class="row">
+  <div class="col-xs-6 col-xs-offset-3 col-sm-3 col-sm-offset-0 col-md-4">
+    <%= image_tag(@game.image, class: "game-panel-image img-responsive") %>
+  </div>
+  <div class="col-xs-10 col-xs-offset-1 col-sm-9 col-sm-offset-0 col-md-8">
+    <h3>Game Description:</h3>
+    <br>
+    <p class="lead"><%= @game.description.html_safe %></p>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-xs-8 col-xs-offset-2">
+    <h3 class="text-center">Game Details</h3>
+    <table class="table">
+      <% @parameters.each do |parameter| %>
+        <tr>
+          <td class="text-center">
+            <%= parameter.to_s.gsub(/_/, " ") %>
+          </td>
+          <td class="text-center">
+            <%= @details.method(parameter).call.kind_of?(Array) ? @details.method(parameter).call.join(' / ') : @details.method(parameter).call %>
+          </td>
+        </tr>
+      <% end %>
+    </table>
+  </div>
+
+</div>
