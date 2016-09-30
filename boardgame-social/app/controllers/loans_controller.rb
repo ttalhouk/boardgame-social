@@ -27,8 +27,9 @@ class LoansController < ApplicationController
 
 
   def destroy
-    @user = User.find(owner_id: loan_params[:owner_id])
-    @loan = Loan.find(loan_params[:loan_id])
+    pp params
+    @user = User.find(loan_params[:owner_id].to_i)
+    @loan = Loan.find(loan_params[:loan_id].to_i)
     canceled_loan = @user.loans.delete(@loan)
     if canceled_loan
       flash[:notice] = "Loan Closed!"
