@@ -47,7 +47,7 @@
           <% end %>
           <% if current_user.id == params[:id].to_i || current_user == request.borrower %>
           <div class="btn-group">
-            <%= button_to loans_destroy_path, method: 'delete', class:'btn btn-danger btn-sm', params: {owner_id: profile.id, loan_id: request.id} do %>
+            <%= button_to loans_destroy_path, method: 'delete', class:'btn btn-danger btn-sm', params: {owner_id: request.user.id, loan_id: request.id} do %>
               <span class="glyphicon glyphicon-remove"></span><span class="hidden-sm hidden-xs"> Remove Request</span>
             <% end %>
           </div>
