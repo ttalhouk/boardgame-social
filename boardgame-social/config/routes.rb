@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+
   devise_for :users
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 
@@ -7,6 +8,10 @@ Rails.application.routes.draw do
 
   post 'friendships/create'
   delete 'friendships/destroy'
+
+  post 'loans/create'
+  put 'loans/confirm'
+  delete 'loans/destroy'
 
   get 'games/search', to: 'games#search', as: 'games_search'
   get 'games/result', to: 'games#result', as: 'games_result'

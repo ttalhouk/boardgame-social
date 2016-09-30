@@ -21,6 +21,12 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
+    @loans = @user.loans.where(status: "confirmed")
+    pp @loans
+    @requests = @user.loans.where(status: "requested")
+    pp @requests
+    @borrowings = @user.borrowings.where(status:"confirmed")
+    pp @borrowings
     if @user.nil?
       flash.now[:alert] = "User Not Found"
       redirect_to users_path

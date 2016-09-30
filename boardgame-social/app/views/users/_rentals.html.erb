@@ -1,0 +1,77 @@
+<h3 class="text-center">Loaned Games</h3>
+<ul class="list-group center-block">
+  <% if loans == [] %>
+    <li class="list-group-item clearfix">
+      <h4 class="loaned-games-list text-center">No Loaned Games</h4>
+    </li>
+  <% end %>
+  <% loans.each do |loan| %>
+    <li class="list-group-item clearfix">
+      <h3 class="loaned-games-list">
+        <strong><%= loan.game.name %></strong>
+        <br>
+        <span class="badge"><%= loan.borrower.bgg_username %></span>
+        <span class="badge"><%= loan.updated_at.strftime("%m/%e/%y") %></span>
+        <span class="btn-group pull-right">
+          <% if current_user.id == params[:id].to_i %>
+            <%= button_to loans_destroy_path, method: 'delete', class:'btn btn-danger btn-sm', params: {loan_id: loan.id} do %>
+              <span class="glyphicon glyphicon-remove"></span><span class="hidden-sm hidden-xs"> Game Returned</span>
+            <% end %>
+          <% end %>
+        </span>
+      </h3>
+    </li>
+  <% end %>
+</ul>
+<h3 class="text-center">Pending Loan Requests</h3>
+<ul class="list-group center-block">
+  <% if requests == [] %>
+    <li class="list-group-item clearfix">
+      <h4 class="loaned-games-list text-center">No Pending Requests</h4>
+    </li>
+  <% end %>
+  <% requests.each do |request| %>
+    <li class="list-group-item clearfix">
+      <h3 class="loaned-games-list">
+        <strong><%= request.game.name %></strong>
+        <br>
+        <span class="badge"><%= request.borrower.bgg_username %></span>
+        <span class="badge"><%= request.updated_at.strftime("%m/%e/%y") %></span>
+        <div class="btn-group inline-block pull-right">
+          <% if current_user.id == params[:id].to_i %>
+          <div class="btn-group">
+            <%= button_to loans_confirm_path, method: 'put', class:'btn btn-success btn-sm', params: {loan_id: request.id} do %>
+              <span class="glyphicon glyphicon-ok"></span><span class="hidden-sm hidden-xs"> Approve?</span>
+            <% end %>
+          </div>
+          <% end %>
+          <% if current_user.id == params[:id].to_i || current_user == request.borrower %>
+          <div class="btn-group">
+            <%= button_to loans_destroy_path, method: 'delete', class:'btn btn-danger btn-sm', params: {owner_id: profile.id, loan_id: request.id} do %>
+              <span class="glyphicon glyphicon-remove"></span><span class="hidden-sm hidden-xs"> Remove Request</span>
+            <% end %>
+          </div>
+          <% end %>
+        </div>
+      </h3>
+    </li>
+  <% end %>
+</ul>
+<h3 class="text-center"><%= profile.bgg_username%>'s Borrowed Games</h3>
+<ul class="list-group center-block">
+  <% if borrowings == [] %>
+    <li class="list-group-item clearfix">
+      <h4 class="loaned-games-list text-center">No Borrowed Games</h4>
+    </li>
+  <% end %>
+  <% borrowings.each do |borrowed| %>
+    <li class="list-group-item clearfix">
+      <h3 class="loaned-games-list">
+        <strong><%= borrowed.game.name %></strong>
+        <br>
+        <span class="badge"><%= borrowed.user.bgg_username %></span>
+        <span class="badge"><%= borrowed.updated_at.strftime("%m/%e/%y") %></span>
+      </h3>
+    </li>
+  <% end %>
+</ul>
