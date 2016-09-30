@@ -33,9 +33,15 @@
                 </div>
               <% end %>
               <% if current_user_page %>
-              <%= button_to user_games_remove_path(current_user), method: 'delete', params: {game_id: game.id}, class:"btn-responsive btn btn-danger remove-button center-block", remote: true do %>
-                  <span class="glyphicon glyphicon-remove"></span> Remvove from Collection
-              <% end %>
+                <%= button_to user_games_remove_path(current_user), method: 'delete', params: {game_id: game.id}, class:"btn-responsive btn btn-danger remove-button center-block btn-sm", remote: true do %>
+                    <span class="glyphicon glyphicon-remove"></span> Remvove from Collection
+                <% end %>
+              <% else %>
+                <% if @user.friends.include?(current_user) %>
+                  <%= button_to loans_create_path, method: 'post', params: {owner_id: @user.id, game_id: game.id}, class:"btn-responsive btn btn-primary request-button center-block btn-sm" do %>
+                      <span class="glyphicon glyphicon-hand-right"></span> Borrow?
+                  <% end %>
+                <% end %>
               <% end %>
             </div>
             <%= link_to user_game_path(@user, game) do %>

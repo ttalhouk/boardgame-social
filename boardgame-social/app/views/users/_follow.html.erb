@@ -9,7 +9,7 @@
       <span class="badge"><%= friendship.friend.games.count %> games</span>
       <span class="btn-group pull-right">
         <% if current_user.id == params[:id].to_i %>
-        <%= button_to friendships_destroy_path, method: 'delete', class:'btn btn-danger', params: {friend: friendship.friend.id, inverse: false} do %>
+        <%= button_to friendships_destroy_path, method: 'delete', class:'btn btn-danger btn-sm', params: {friend: friendship.friend.id, inverse: false} do %>
         <span class="glyphicon glyphicon-remove"></span><span class="hidden-sm hidden-xs"> Remove Friend</span>
         <% end %>
       </span>
@@ -30,7 +30,7 @@
       <span class="badge"><%= user.games.count %> games </span>
       <span class="btn-group pull-right">
         <% if current_user.id == params[:id].to_i %>
-        <%= button_to friendships_destroy_path, method: 'delete', class:'btn btn-danger', params: {friend: user.id, inverse: true} do %>
+        <%= button_to friendships_destroy_path, method: 'delete', class:'btn btn-danger btn-sm', params: {friend: user.id, inverse: true} do %>
         <span class="glyphicon glyphicon-remove"></span><span class="hidden-sm hidden-xs"> Remove Friend</span>
         <% end %>
         <% end %>

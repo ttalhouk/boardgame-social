@@ -12,11 +12,11 @@
           <div class="row">
             <div class="col-xs-12 col-sm-2 col-md-3 text-center user-panel-side">
               <%= image_tag(user.image, class: "user-panel-image img-responsive") %>
-              <%= link_to user_games_path(user), class:"btn btn-info btn-responsive center-block" do %>
+              <%= link_to user_games_path(user), class:"btn btn-info btn-responsive center-block btn-sm" do %>
                   <span class="glyphicon glyphicon-globe" aria-hidden="true"></span>
                   <span class="sr-only">Link to User Collection</span><%= user.bgg_username%>'s Collection
               <% end %>
-              <%= link_to friendships_create_path(:friend_id => user), method: 'post', class:'btn btn-success btn-responsive center-block' do %>
+              <%= link_to friendships_create_path(:friend_id => user), method: 'post', class:'btn btn-success btn-responsive center-block btn-sm' do %>
                 <span class="glyphicon glyphicon-user"></span> Add Friend
               <% end %>
             </div>

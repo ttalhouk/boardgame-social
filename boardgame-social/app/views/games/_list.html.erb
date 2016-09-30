@@ -19,7 +19,7 @@
                   BGG Game Listing
                 </div>
               <% end %>
-              <%= button_to user_games_add_path(current_user), method: 'post', params: {game_id: game.bgg_id}, class:"btn btn-success btn-responsive center-block add-button" do %>
+              <%= button_to user_games_add_path(current_user), method: 'post', params: {game_id: game.bgg_id}, class:"btn btn-success btn-responsive center-block add-button btn-sm" do %>
                   <span class="glyphicon glyphicon-plus"></span> Add to Collection
               <% end %>
             </div>

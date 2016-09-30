@@ -11,7 +11,6 @@ Rails.application.routes.draw do
 
   post 'loans/create'
   put 'loans/confirm'
-  delete 'loans/retract'
   delete 'loans/destroy'
 
   get 'games/search', to: 'games#search', as: 'games_search'
